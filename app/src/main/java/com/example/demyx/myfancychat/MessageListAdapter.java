@@ -1,6 +1,7 @@
 package com.example.demyx.myfancychat;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import static android.R.id.icon;
+import static android.R.id.icon1;
 import static android.R.id.message;
 
 /**
@@ -32,9 +35,9 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
         }
 
         ImageView person = (ImageView)convertView.findViewById(R.id.imageView);
-        //person.getBackground();
+        person.getDrawable();
         TextView messageView = (TextView)convertView.findViewById(R.id.textView);
-        messageView.setText(message.getMessage()+ ": "+message.getTimestapm());
+        messageView.setText(message.getUser() + ": " + message.getMessage());
 
         return convertView;
     }

@@ -34,10 +34,14 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.message_layout,parent,false);
         }
 
+
+
+
         ImageView person = (ImageView)convertView.findViewById(R.id.imageView);
-        person.getDrawable();
+        if(message.getUser().getName().equals("Me")){person.setImageURI(message.getUser().getPhotoUri());}
+        else{person.setImageResource(R.drawable.mar);}
         TextView messageView = (TextView)convertView.findViewById(R.id.textView);
-        messageView.setText(message.getUser() + ": " + message.getMessage());
+        messageView.setText(message.getUser().getName() + ": " + message.getMessage());
 
         return convertView;
     }

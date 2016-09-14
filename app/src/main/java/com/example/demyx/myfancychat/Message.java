@@ -8,17 +8,17 @@ import java.util.Date;
  */
 
 public class Message implements Serializable {
-    String user;
+    Contact user;
     String message;
     Date timestapm;
 
-    public Message(String message, String user) {
+    public Message(String message, Contact user) {
         this.message = message;
         this.user = user;
         this.timestapm = new Date();
     }
 
-    public String getUser() {
+    public Contact getUser() {
         return user;
     }
 

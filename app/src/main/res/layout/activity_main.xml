@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,6 +12,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.demyx.myfancychat.MainActivity">
+
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -24,7 +27,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:text="Name"
         android:ems="10"
         android:id="@+id/messageText"
         android:layout_alignParentBottom="true"
@@ -37,6 +39,8 @@
         android:id="@+id/listView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/sendButton" />
+        android:layout_above="@+id/sendButton"
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true"/>
 
 </RelativeLayout>

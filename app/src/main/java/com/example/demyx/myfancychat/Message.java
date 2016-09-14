@@ -8,19 +8,23 @@ import java.util.Date;
  */
 
 public class Message implements Serializable {
-    Contact user;
+    Contact sender;
+    Contact reciver;
     String message;
     Date timestapm;
 
-    public Message(String message, Contact user) {
+    public Message(String message, Contact from, Contact to) {
         this.message = message;
-        this.user = user;
+        this.sender = from;
+        this.reciver = to;
         this.timestapm = new Date();
     }
 
-    public Contact getUser() {
-        return user;
+    public Contact getSender() {
+        return sender;
     }
+
+    public Contact getReciver() { return reciver; }
 
     public String getMessage() {
         return message;

@@ -55,8 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 new Message("how", "Nina"),
                 new Message("what", "Dave"),*/
                 for(int i=0; i<contacts.size(); i++){
-                msgs.add(new Message("test",contacts.get(i)));
+                msgs.add(new Message("test",contacts.get(i),me));
         }
+
+
 
         //);
         final MessageListAdapter mla = new MessageListAdapter(getApplicationContext(), msgs);
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                           @Override
                                           public void onClick (View view){
                                               if(sendText.getText().length() != 0){
-                                                  mla.add(new Message(sendText.getText().toString(), me));
+                                                  mla.add(new Message(sendText.getText().toString(), me, me));
                                                   mla.notifyDataSetChanged();
                                                   sendText.getText().clear();
 
@@ -125,8 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
                 int number = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts.PHONETIC_NAME));
                 int ID = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+
                 Uri photoUri = null;
-                //Uri photoUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI,ContactsContract.Contacts.PHOTO_FILE_ID);
+
                 if(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI)) != null){
                     photoUri = Uri.parse(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI)));
                 }

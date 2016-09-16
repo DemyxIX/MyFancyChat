@@ -2,6 +2,7 @@ package com.example.demyx.myfancychat;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,12 +41,13 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
         ImageView person = (ImageView)convertView.findViewById(R.id.imageView);
         //if(message.getUser().getName().equals("Me")){
 
-            person.setImageURI(message.getSender().getPhotoUri());
+            person.setImageURI(Uri.parse(message.getSender().getPhotoUri()));
 
           //  else{person.setImageResource(R.drawable.mar);}
 
         TextView messageView = (TextView)convertView.findViewById(R.id.textView);
-        messageView.setText(message.getSender().getName() + ": " + message.getMessage());
+
+        messageView.setText(message.getSender().getName() +" : " + message.getSender().getNumber() + ": " + message.getMessage());
 
         return convertView;
     }

@@ -89,52 +89,14 @@ public class MainActivity2 extends AppCompatActivity
             }
         }
 
-
-
-        //List data = Arrays.asList(
-                /*new Message("when", "Tom"),
-                new Message("what", "Dave"),*/
-       /* for(int i=0; i<contacts.size(); i++){
+        /*List data = Arrays.asList(
+                new Message("when", "Tom"),
+                new Message("what", "Dave"),
+        for(int i=0; i<contacts.size(); i++){
             msgs.add(new Message("test",contacts.get(i),me));
         }*/
 
-
-
-
-
-displayMainWindow();
-
-
-
-
-
-
-        //);
-
-        /*
-        final MessageListAdapter mla = new MessageListAdapter(getApplicationContext(), msgs);
-
-
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(mla);
-
-
-        final EditText sendText = (EditText) findViewById(R.id.messageText);
-        final ImageButton sendButton = (ImageButton) findViewById(R.id.sendButton);
-        sendButton.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick (View view){
-                                              if(sendText.getText().length() != 0){
-                                                  mla.add(new Message(sendText.getText().toString(), me, me));
-                                                  mla.notifyDataSetChanged();
-                                                  sendText.getText().clear();
-
-
-                                              }
-                                          }
-
-                                      }
-        );*/
+        displayMainWindow();
     }
 
     private void displayMainWindow(){
@@ -254,9 +216,10 @@ displayMainWindow();
                 // Get the contacts name
                 String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
                 String number = null;
-                String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+                int ID = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+                String photoUri = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI));
                 // Query phone here. Covered next
-                Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
+                Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + ID, null, null);
                 while (phones.moveToNext()) {
                     number = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                     Log.i("Number", number);
@@ -264,28 +227,11 @@ displayMainWindow();
                 }
                 phones.close();
 
-
-
-
-
-                int ID = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-
-                String photoUri = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI));
-
-                //if(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI)) != null){
-                  //  photoUri = Uri.parse(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI)));
-                //}
-                //else{
-                  //  photoUri = new Uri.Builder().build();
-                //}
-
                 contacts.add(new Contact(name, number, ID, photoUri));
 
                 if (name.equals("Me")) {
                     me = (Contact) contacts.get(((contacts.size()) - 1));
                 }
-
-
 
             }
             while (cursor.moveToNext()) ;

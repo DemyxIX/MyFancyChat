@@ -36,21 +36,16 @@ public class ChatListAdapter extends ArrayAdapter<List<Message>> {
         if(messageList.size()>0) {
             Message last = messageList.get(messageList.size() - 1);
 
-
             ImageView person = (ImageView) convertView.findViewById(R.id.imageView);
-            //if(message.getUser().getName().equals("Me")){
-
             person.setImageURI(Uri.parse(last.getSender().getPhotoUri()));
-
-            //  else{person.setImageResource(R.drawable.mar);}
-
             TextView messageView = (TextView) convertView.findViewById(R.id.textView);
+
             if(last.getSender().getName().equals("Me")){
                 person.setImageURI(Uri.parse(last.getReciver().getPhotoUri()));
                 messageView.setText(last.getReciver().getName() +" : " + last.getReciver().getNumber() + ": " + last.getMessage());
             } else{
             messageView.setText(last.getSender().getName() + " : " + last.getSender().getNumber() + ": " + last.getMessage());
-        }
+            }
         }
         return convertView;
     }

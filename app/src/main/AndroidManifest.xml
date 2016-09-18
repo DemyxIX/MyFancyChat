@@ -13,7 +13,8 @@
         <activity
             android:name=".MainActivity2"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +24,10 @@
         <activity
             android:name=".DisplayChatActivity"
             android:label="@string/title_activity_display_chat"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
